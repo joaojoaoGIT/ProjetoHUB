@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Teclado Sahur</title>
+  <meta name="description" content="Teclado Sahur — teclado musical virtual com múltiplos instrumentos." />
+  <link rel="stylesheet" href="style.css" />
+  <!-- WebAudioFont via CDN -->
+  <script src="https://cdn.jsdelivr.net/gh/surikov/webaudiofont@master/npm/dist/WebAudioFontPlayer.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      
+      <h1>Teclado Sahur</h1>
+    </div>
+  </header>
+
+  <section class="controls">
+    <div class="control-group instrument-control">
+      <label>Instrumento</label>
+      <div class="instrument-picker" role="tablist" aria-label="Instrumentos">
+        <button id="instPrev" class="inst-btn" aria-label="Instrumento anterior">🎹</button>
+        <div id="instrumentDisplay" class="inst-display" aria-live="polite">
+          <span class="inst-emoji">🎹</span>
+          <span class="inst-name">Piano</span>
+        </div>
+        <button id="instNext" class="inst-btn" aria-label="Próximo instrumento">🎸</button>
+      </div>
+    </div>
+    <div class="control-group">
+      <button id="recordBtn">● Gravar</button>
+      <button id="playBtn" disabled>▶ Reproduzir</button>
+      <button id="clearBtn" disabled>✕ Limpar</button>
+    </div>
+    <div class="control-group oct-group" aria-label="Oitava">
+      <label for="octDisplay">Oitava</label>
+      <button id="octDown" class="oct-btn" title="Oitava menor">−</button>
+      <span id="octDisplay" class="oct-display">0</span>
+      <button id="octUp" class="oct-btn" title="Oitava maior">+</button>
+    </div>
+    <div class="control-group">
+      
+      <button id="themeToggle" aria-pressed="false" title="Alternar tema" class="theme-toggle">
+        <img id="themeIcon" src="assets/moon-solid.png" alt="Alternar tema" class="theme-icon" />
+        <span class="visually-hidden">Alternar tema</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="keyboard-wrap">
+    <div class="keyboard" id="keyboard"></div>
+  </section>
+
+  <section class="recording-panel">
+    <h3>Notas Gravadas</h3>
+    <div class="recorded-notes" id="recordedNotes"></div>
+    <div class="status" id="status"></div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
