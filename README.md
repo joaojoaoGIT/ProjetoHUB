@@ -1,439 +1,116 @@
-# 🚀 Projeto CornHub
+[README.md](https://github.com/user-attachments/files/28277660/README.md)
+# 💰 Cofre Virtual
 
-Este repositório reúne diversos projetos desenvolvidos utilizando HTML, CSS e JavaScript com foco em aprendizado, interatividade, manipulação de DOM, áudio, lógica de programação e experiência do usuário.
-
----
-
-# 💡 Simulador de Interruptor
-
-Um projeto interativo desenvolvido com HTML, CSS e JavaScript que simula um interruptor ligando e desligando uma lâmpada em um ambiente estilizado.
-
-O sistema altera dinamicamente:
-
-* iluminação da cena
-* aparência do personagem
-* estado visual do interruptor
-* ambiente da página
-
-Ideal para estudos de:
-
-* DOM
-* Eventos
-* Manipulação de classes
-* Interatividade com JavaScript
-
-## 🖼️ Demonstração
-
-### 💡 Luz acesa
-
-`tung`
-
-### 🌑 Luz apagada
-
-`sahur`
-
-## 🚀 Tecnologias Utilizadas
-
-* HTML5
-* CSS3
-* JavaScript
-
-## 📂 Estrutura do Projeto
-
-```txt
-simulador-interruptor/
-│
-├── index.html
-├── README.md
-│
-├── css/
-│   └── style.css
-│
-├── js/
-│   └── script.js
-│
-└── img/
-    ├── lampada-apagada.png
-    └── lampada-acesa.png
-```
+Aplicação simples em HTML, CSS e JavaScript que simula um cofre de moedas, permitindo adicionar valores, sacar e acompanhar o saldo.
 
 ---
 
-# 🍅 Pomodoro Timer
+## 🧠 Lógica do Projeto
 
-Um cronômetro baseado na técnica Pomodoro para melhorar foco e produtividade.
+O sistema funciona baseado em um objeto chamado `estado`, que armazena:
 
-## Sobre o método Pomodoro
+- saldo total (em centavos)
+- quantidade de moedas (10, 25, 50 e 100 centavos)
 
-A Técnica Pomodoro foi criada por Francesco Cirillo e consiste em dividir o tempo em ciclos:
+- 
 
-* 25 minutos de foco total
-* 5 minutos de pausa curta
-* Após alguns ciclos: pausa maior
+### Funcionamento:
 
-A ideia é evitar fadiga mental e aumentar a produtividade.
+1. **Persistência de dados**
+   - Utiliza `localStorage` para salvar o estado do cofre
+   - Ao recarregar a página, os dados são restaurados
 
-## ✨ Funcionalidades
+2. **Atualização da interface**
+   - Sempre que uma ação ocorre (adicionar moeda, sacar, esvaziar), a função `atualizar()`:
+     - Atualiza o saldo na tela
+     - Atualiza contadores
+     - Atualiza animações do cofre
 
-✅ Temporizador de foco e descanso
-✅ Iniciar, pausar e resetar
-✅ Configuração personalizada dos tempos
-✅ Alternância entre modo claro e escuro
-✅ Som ao finalizar um ciclo
-✅ Interface responsiva
+3. **Cálculo do saldo**
+   - O saldo é armazenado em centavos para evitar erros com números decimais
+  
+   - 
+   🎨 Imagem exemplo
+<img width="609" height="671" alt="Captura de tela 2026-05-26 144847" src="https://github.com/user-attachments/assets/bf709e1a-cce5-4496-8b80-42c580e4ce1a" />
 
-## 🚀 Tecnologias utilizadas
 
-* HTML5
-* CSS3
-* JavaScript
 
-## 🖼️ Demonstração
+---
 
-Funcionamento
+## 💱 Como alterar a moeda (R$ → US$)
 
-## ▶️ Como executar
+No arquivo `script.js`, localize a função:
 
-Clone o projeto:
-
-```bash
-git clone https://github.com/joaojoaoGIT/ProjetoHUB/blob/main/redTools/pomodoro/README.md
+```js
+function formatarBRL(centavos) {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(centavos / 100);
+}
 ```
 
-Entre na pasta:
+### Para dólar (US$), altere para:
 
-```bash
-cd pomodoro
+```js
+function formatarUSD(centavos) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  }).format(centavos / 100);
+}
 ```
 
-Abra:
+E substitua as chamadas de `formatarBRL` por `formatarUSD`.
 
-```txt
-index.html
+---
+
+## 📊 Sugestão de versão com gráficos (nível intermediário)
+
+Você pode evoluir o projeto adicionando gráficos com a biblioteca **Chart.js**.
+
+### Ideias:
+
+- 📈 Gráfico de evolução do saldo ao longo do tempo
+- 🪙 Gráfico de pizza mostrando distribuição de moedas
+- 📊 Histórico de depósitos e saques
+
+### Exemplo básico:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<canvas id="grafico"></canvas>
 ```
 
-## 🧠 Lógica usada no cronômetro
-
-### setInterval()
-
-O `setInterval()` executa uma função repetidamente em um intervalo de tempo.
-
-Exemplo:
-
-```javascript
-intervaloId = setInterval(() => {
-   tempoAtualSegundos--;
-   atualizarDisplay();
-},1000);
-```
-
-Fluxo:
-
-```txt
-Espera 1 segundo
-↓
-Diminui 1 segundo
-↓
-Atualiza tela
-↓
-Repete até parar
-```
-
-### clearInterval()
-
-O `clearInterval()` interrompe a execução do intervalo.
-
-Exemplo:
-
-```javascript
-clearInterval(intervaloId);
-```
-
-Foi utilizado em:
-
-* Pausar cronômetro
-* Resetar
-* Quando o tempo chega em zero
-
-Sem isso vários temporizadores seriam criados ao clicar em "Iniciar" várias vezes.
-
-## Fluxo da lógica
-
-```txt
-Iniciar
-   ↓
-setInterval()
-   ↓
-tempo--
-   ↓
-Atualiza display
-   ↓
-Tempo chegou em 0?
-   ↓
-Sim → clearInterval()
-   ↓
-Troca Foco/Pausa
+```js
+new Chart(document.getElementById('grafico'), {
+  type: 'pie',
+  data: {
+    labels: ['10¢', '25¢', '50¢', 'R$1'],
+    datasets: [{
+      data: [estado.c10, estado.c25, estado.c50, estado.c100]
+    }]
+  }
+});
 ```
 
 ---
 
-# 🎹 Tung Tung Sol Lá Sí
+## 🚀 Melhorias futuras
 
-Um estúdio musical interativo desenvolvido com JavaScript Vanilla, Web Audio API e WebAudioFont.
+- Histórico completo de transações
+- Exportar dados
+- Modo escuro
+- Suporte a múltiplas moedas
 
-O projeto permite:
+---
 
-* tocar instrumentos em tempo real
-* utilizar drum pads
-* gravar tracks
-* reproduzir sequências
-* alternar entre instrumentos diretamente no navegador
+## 📁 Estrutura
 
-## ✨ Features
-
-🎹 Piano virtual interativo
-🥁 Drum pads funcionais
-🎸 Suporte para múltiplos instrumentos
-⏺️ Sistema de gravação de tracks
-▶️ Reprodução timeline/sequencer
-🎚️ Controle de volume individual
-🌙 Tema Dark/Light
-📱 Interface responsiva
-⚡ Sem frameworks
-🔊 Áudio em tempo real
-
-## 📂 Estrutura do Projeto
-
-```txt
-project/
-│
+```
+cofre-repo/
 ├── index.html
 ├── style.css
 ├── script.js
 └── README.md
 ```
-
-## 🚀 Tecnologias Utilizadas
-
-| Tecnologia         | Função                     |
-| ------------------ | -------------------------- |
-| HTML5              | Estrutura da aplicação     |
-| CSS3               | Interface e responsividade |
-| JavaScript Vanilla | Lógica do projeto          |
-| Web Audio API      | Sistema de áudio           |
-| WebAudioFont       | Instrumentos musicais      |
-
-## 🔊 Sistema de Áudio
-
-O projeto utiliza WebAudioFont para reproduzir instrumentos reais diretamente no navegador utilizando soundfonts.
-
-CDN:
-
-```html
-<script src="https://surikov.github.io/webaudiofont/npm/dist/WebAudioFontPlayer.js"></script>
-```
-
-Exemplo:
-
-```javascript
-const SOUNDS = {
-  piano: {
-    variable: '_tone_0000_JCLive_sf2_file',
-    url: 'https://surikov.github.io/webaudiofontdata/sound/0000_JCLive_sf2_file.js'
-  }
-}
-```
-
-Cada instrumento possui:
-
-* variável global
-* soundfont
-* sample de áudio
-* notas MIDI
-
-## 🎵 Reprodução de Notas
-
-Utiliza:
-
-`queueWaveTable()`
-
-Recebe:
-
-* contexto de áudio
-* instrumento carregado
-* pitch MIDI
-* duração
-* volume
-
-O sistema utiliza:
-
-* AudioContext
-* GainNode
-* Buffers
-* WaveTables
-
-## 🎹 Piano Virtual
-
-Possui:
-
-* duas oitavas
-* suporte a mouse
-* suporte touch
-* teclado físico QWERTY
-* animações
-* teclas brancas e pretas
-
-Mapeamento:
-
-| Tecla | Nota |
-| ----- | ---- |
-| A     | C    |
-| W     | C#   |
-| S     | D    |
-| E     | D#   |
-
-Eventos:
-
-```javascript
-document.addEventListener('keydown')
-document.addEventListener('keyup')
-```
-
-## 🥁 Drum Pads
-
-Pads:
-
-* kick
-* snare
-* hi-hat
-* open hat
-* crash
-
-Exemplo:
-
-```javascript
-{
-  name:'Bumbo',
-  key:'q',
-  sound:'kick'
-}
-```
-
-## ⏺️ Sistema de Gravação
-
-Salva:
-
-```javascript
-{
-  instrument,
-  noteIndex,
-  time,
-  duration
-}
-```
-
-Permite:
-
-* reprodução posterior
-* múltiplas tracks
-* timeline
-* sequenciamento
-
-## ▶️ Sequencer / Playback
-
-Utiliza:
-
-```javascript
-requestAnimationFrame()
-```
-
-Possui:
-
-* timeline visual
-* múltiplas tracks
-* mute individual
-* volume individual
-* reprodução sincronizada
-
-## 🎨 Sistema CSS
-
-Utiliza:
-
-* CSS Variables
-* Design Tokens
-* Gradients
-* Shadows
-* Glassmorphism
-* Responsividade
-
-Temas:
-
-```css
-:root,
-[data-theme="dark"]
-```
-
-```css
-[data-theme="light"]
-```
-
-Troca:
-
-```javascript
-document.documentElement.setAttribute()
-```
-
-## 📱 Responsividade
-
-Media Query:
-
-```css
-@media (max-width:900px)
-```
-
-## 🧠 Organização do Código
-
-### script.js
-
-* CONFIG
-* STATE
-* AUDIO ENGINE
-* NOTE HANDLING
-* KEYBOARD HANDLING
-* RENDERING
-* CONTROLS
-* INIT
-
-### style.css
-
-* DESIGN TOKENS
-* LIGHT THEME
-* APP LAYOUT
-* CONTROLS BAR
-* PIANO KEYBOARD
-* DRUM PADS
-* SEQUENCER
-* RESPONSIVE
-
-## ⚡ Performance
-
-Otimizações:
-
-* preload de instrumentos
-* AudioContext único
-* GainNode master
-* volume global
-* carregamento assíncrono
-* gerenciamento de notas ativas
-
-## 📸 Imagens
-
-1. Interface Principal
-2. Drum Pads
-3. Tracks
-4. Tema Light
-5. Responsividade
-
-## 👨‍💻 Autor
-
-João Pedro Cassanego Reichert
