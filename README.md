@@ -1,4 +1,12 @@
-[README.md](https://github.com/user-attachments/files/28277660/README.md)
+# 🚀 Projeto CornHub
+
+## 📌 Navegação Rápida
+
+- 🎹 [Tung Tung Sol Lá Sí](#-tung-tung-sol-lá-sí)
+- 🍅 [Pomodoro Timer](#-pomodoro-timer)
+- 💡 [Simulador de Interruptor](#-simulador-de-interruptor)
+
+---
 # 💰 Cofre Virtual
 
 Aplicação simples em HTML, CSS e JavaScript que simula um cofre de moedas, permitindo adicionar valores, sacar e acompanhar o saldo.
