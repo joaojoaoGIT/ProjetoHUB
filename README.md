@@ -457,6 +457,7 @@ O projeto utiliza otimizações como:
 
 
 ---
+
 # 🍅 Pomodoro Sahur
 
 Um cronômetro baseado na técnica Pomodoro para melhorar foco e produtividade.
@@ -503,7 +504,7 @@ A ideia é evitar fadiga mental e aumentar a produtividade.
 Clone o projeto:
 
 ```bash
-git clone https://github.com/joaojoaoGIT/ProjetoHUB/tree/main/redTools/pomodoro
+git clone https://github.com/seuusuario/pomodoro.git
 ```
 
 Entre na pasta:
@@ -583,5 +584,3 @@ Sim → clearInterval()
    ↓
 Troca Foco/Pausa
 ```
-
-
