@@ -1,83 +1,338 @@
-# 🎹 WoodBoard Studio
+# 🎹 Tung Tung Sol Lá Sí
 
-Um mini-estúdio musical no navegador com estética de **madeira**, modo **claro/escuro**, **4 instrumentos** (piano, flauta, violão, bateria) e **gravador estilo BandLab**.
+Um estúdio musical interativo desenvolvido com JavaScript Vanilla, Web Audio API e WebAudioFont.
+O projeto permite tocar instrumentos em tempo real, utilizar drum pads, gravar tracks, reproduzir sequências e alternar entre diferentes instrumentos diretamente no navegador.
 
-Feito 100% com **HTML + CSS + JavaScript puro**. Os sons vêm direto do CDN do GitHub do projeto [WebAudioFont](https://surikov.github.io/webaudiofont/) — nenhum arquivo de áudio precisa ser baixado.
+---
 
-## ▶️ Como rodar (passo a passo bem fácil)
+# ✨ Features
 
-1. Crie uma pasta no seu computador, por exemplo `woodboard`.
-2. Dentro dela, crie 3 arquivos e cole o conteúdo correspondente:
-   - `index.html`
-   - `style.css`
-   - `script.js`
-3. Dê **duplo clique** no `index.html`. Pronto — abre no navegador.
+* 🎹 Piano virtual interativo
+* 🥁 Drum pads funcionais
+* 🎸 Suporte para múltiplos instrumentos
+* ⏺️ Sistema de gravação de tracks
+* ▶️ Reprodução timeline/sequencer
+* 🎚️ Controle de volume individual
+* 🌙 Tema Dark/Light
+* 📱 Interface responsiva
+* ⚡ Sem frameworks
+* 🔊 Áudio em tempo real
 
-> Dica: alguns navegadores bloqueiam som até você clicar uma vez na página. Clique em qualquer tecla — depois disso, tudo funciona.
+---
 
-## 🎮 Como usar
+# 📂 Estrutura do Projeto
 
-| Ação | Como |
-|------|------|
-| Tocar nota | Clique na tecla **ou** use o teclado físico (`A S D F G H J` notas brancas, `W E T Y U` pretas) |
-| Trocar instrumento | Menu no topo |
-| Mudar oitava | Menu **Oitava** (3 a 6) |
-| Trocar som do piano | Menu **Som do Piano** (Grand, Bright, Eletric) |
-| Bateria | Teclas `Z X C V` (Bumbo, Caixa, Chimbal, Prato) |
-| Modo claro/escuro | Botão 🌙/☀️ |
-| **Gravar** | Clique em ⏺, toque sua música, clique de novo para parar |
-| **Reproduzir** | ▶ — toca exatamente o que você gravou |
-| **Editar** | Arraste os blocos na timeline para mover no tempo; clique com botão direito para apagar |
-| Limpar tudo | 🗑 |
-
-## 🔊 Como adicionar novos sons
-
-O WebAudioFont tem **centenas** de instrumentos prontos. Para adicionar:
-
-1. Vá em https://surikov.github.io/webaudiofont/ e escolha um instrumento. Copie a URL `.js` (ex.: `https://surikov.github.io/webaudiofontdata/sound/0480_Chaos_sf2_file.js`).
-2. No `script.js`, encontre o objeto `PRESETS` e adicione:
-
-```js
-violino: [{ name:'_tone_0480_Chaos_sf2_file', url:'https://surikov.github.io/webaudiofontdata/sound/0480_Chaos_sf2_file.js' }],
-```
-
-3. No `index.html`, adicione uma opção no `<select id="instrument">`:
-
-```html
-<option value="violino">Violino</option>
-```
-
-Pronto — funciona automaticamente.
-
-### Trocar por sons engraçados/personalizados
-
-Se quiser usar **seus próprios** `.mp3`/`.wav` (vozes, efeitos):
-
-```js
-const meuSom = new Audio('sons/risada.mp3');
-function tocarRisada(){ meuSom.currentTime=0; meuSom.play(); }
-```
-
-E chame `tocarRisada()` no clique da tecla.
-
-## 🛡️ Por que não estoura o som?
-
-Tudo passa por um `GainNode` (volume master a 60%) e um `DynamicsCompressor` que achata picos. Mesmo apertando 10 teclas juntas, o áudio fica limpo.
-
-## 🚀 Publicar no GitHub Pages
-
-1. Crie um repositório no GitHub e suba os 4 arquivos.
-2. Vá em **Settings → Pages → Source: main / root**.
-3. O link sai em segundos: `https://SEU-USUARIO.github.io/NOME-DO-REPO/`.
-
-## 📂 Estrutura
-
-```
-woodboard/
+```txt
+project/
+│
 ├── index.html
 ├── style.css
 ├── script.js
 └── README.md
 ```
 
-Feito com ❤️ e madeira.
+---
+
+# 🚀 Tecnologias Utilizadas
+
+| Tecnologia         | Função                     |
+| ------------------ | -------------------------- |
+| HTML5              | Estrutura da aplicação     |
+| CSS3               | Interface e responsividade |
+| JavaScript Vanilla | Lógica do projeto          |
+| Web Audio API      | Sistema de áudio           |
+| WebAudioFont       | Instrumentos musicais      |
+
+---
+
+# 🔊 Sistema de Áudio
+
+O projeto utiliza WebAudioFont para reproduzir instrumentos reais diretamente no navegador utilizando soundfonts.
+
+CDN utilizada:
+
+```html
+<script src="https://surikov.github.io/webaudiofont/npm/dist/WebAudioFontPlayer.js"></script>
+```
+
+Os instrumentos são carregados dinamicamente através de arquivos `.sf2`.
+
+Exemplo:
+
+```js
+const SOUNDS = {
+  piano: {
+    variable: '_tone_0000_JCLive_sf2_file',
+    url: 'https://surikov.github.io/webaudiofontdata/sound/0000_JCLive_sf2_file.js'
+  }
+}
+```
+
+Cada instrumento possui:
+
+* variável global
+* soundfont
+* sample de áudio
+* notas MIDI
+
+---
+
+# 🎵 Reprodução de Notas
+
+As notas são reproduzidas utilizando:
+
+```js
+queueWaveTable()
+```
+
+Esse método recebe:
+
+* contexto de áudio
+* instrumento carregado
+* pitch MIDI
+* duração
+* volume
+
+O sistema utiliza:
+
+* AudioContext
+* GainNode
+* Buffers de áudio
+* WaveTables
+
+---
+
+# 🎹 Piano Virtual
+
+O teclado musical possui:
+
+* duas oitavas
+* suporte a mouse
+* suporte a touch
+* teclado físico QWERTY
+* animações visuais
+* teclas brancas e pretas
+
+Mapeamento exemplo:
+
+| Tecla | Nota |
+| ----- | ---- |
+| A     | C    |
+| W     | C#   |
+| S     | D    |
+| E     | D#   |
+
+Eventos utilizados:
+
+```js
+document.addEventListener('keydown')
+document.addEventListener('keyup')
+```
+
+---
+
+# 🥁 Drum Pads
+
+A bateria virtual possui pads individuais para:
+
+* kick
+* snare
+* hi-hat
+* open hat
+* crash
+
+Cada pad possui:
+
+* tecla própria
+* sample individual
+* cor personalizada
+* efeito visual
+* animação ao pressionar
+
+Exemplo:
+
+```js
+{
+  name: 'Bumbo',
+  key: 'q',
+  sound: 'kick'
+}
+```
+
+---
+
+# ⏺️ Sistema de Gravação
+
+O projeto grava:
+
+* instrumento utilizado
+* nota MIDI
+* tempo inicial
+* duração da nota
+
+Estrutura salva:
+
+```js
+{
+  instrument,
+  noteIndex,
+  time,
+  duration
+}
+```
+
+Isso permite:
+
+* reprodução posterior
+* múltiplas tracks
+* timeline
+* sequenciamento
+
+---
+
+# ▶️ Sequencer / Playback
+
+O sistema de reprodução utiliza:
+
+```js
+requestAnimationFrame()
+```
+
+As notas são organizadas por tempo e executadas na ordem correta.
+
+O sequencer possui:
+
+* timeline visual
+* múltiplas tracks
+* mute individual
+* volume individual
+* reprodução sincronizada
+
+---
+
+# 🎨 Sistema de CSS
+
+O CSS foi desenvolvido utilizando:
+
+* CSS Variables
+* Design Tokens
+* Gradients
+* Shadows
+* Glassmorphism leve
+* Responsividade
+
+O projeto utiliza temas dinâmicos:
+
+```css
+:root,
+[data-theme="dark"]
+```
+
+Tema claro:
+
+```css
+[data-theme="light"]
+```
+
+Troca de tema:
+
+```js
+document.documentElement.setAttribute()
+```
+
+---
+
+# 📱 Responsividade
+
+O layout adapta automaticamente:
+
+* teclado
+* drum pads
+* timeline
+* controles
+* header
+
+Media queries utilizadas:
+
+```css
+@media (max-width: 900px)
+```
+
+---
+
+# 🧠 Organização do Código
+
+O projeto foi dividido em seções para facilitar manutenção:
+
+## script.js
+
+* CONFIG
+* STATE
+* AUDIO ENGINE
+* NOTE HANDLING
+* KEYBOARD HANDLING
+* RENDERING
+* CONTROLS
+* INIT
+
+---
+
+## style.css
+
+* DESIGN TOKENS
+* LIGHT THEME
+* APP LAYOUT
+* CONTROLS BAR
+* PIANO KEYBOARD
+* DRUM PADS
+* SEQUENCER
+* RESPONSIVE
+
+---
+
+# ⚡ Performance
+
+O projeto utiliza otimizações como:
+
+* preload de instrumentos
+* AudioContext único
+* GainNode master
+* controle de volume global
+* carregamento assíncrono
+* gerenciamento de notas ativas
+
+---
+
+# 📸 Imagens
+
+
+### 1. Interface Principal
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/5bb5ec00-5764-4248-8d44-a3b590a0e5cc" />
+
+
+### 2. Drum Pads
+
+<img width="1217" height="373" alt="image" src="https://github.com/user-attachments/assets/c7009f5c-c91c-44b0-a470-0c7c2834a061" />
+
+
+### 3. Tracks
+
+<img width="1323" height="496" alt="image" src="https://github.com/user-attachments/assets/8433a853-dd43-497f-8045-54c5899465a8" />
+
+
+### 4. Tema Light
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/cbdd2754-46ab-4058-99d8-eeb3996916f1" />
+
+### 5. Responsividade
+
+<img width="299" height="549" alt="image" src="https://github.com/user-attachments/assets/c8cce31b-b8b7-4f0e-8abb-1cc86a9d9013" />
+
+
+---
+
+# 👨‍💻 Autor
+
+João Pedro Cassanego Reichert.
+
