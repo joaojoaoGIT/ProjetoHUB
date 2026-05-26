@@ -2,7 +2,7 @@
 
 ## 📌 Navegação Rápida
 
-- 💰 [ Cofre Virtual](#-💰-Cofre-Virtual)
+- 💰 [Cofre Virtual](#-💰-Cofre-Virtual)
 - 🎹 [Tung Tung Sol Lá Sí](#-tung-tung-sol-lá-sí)
 - 🍅 [Pomodoro Sahur](#-Pomodoro-Sahur)
 - 💡 [Simulador de Interruptor](#-simulador-de-interruptor)
