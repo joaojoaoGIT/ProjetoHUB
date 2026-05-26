@@ -117,6 +117,6 @@ pausarBotao.addEventListener('click', pausarContagem);
 resetarBotao.addEventListener('click', resetarContagem);
 configurarBotao.addEventListener('click', alternarConfiguracoes);
 salvarConfigBotao.addEventListener('click', salvarConfiguracoes);
-toggleTemaBotao.addEventListener('click', alternarTema);
+	toggleTemaBotao.addEventListener('click', alternarTema);
 
 atualizarDisplay();

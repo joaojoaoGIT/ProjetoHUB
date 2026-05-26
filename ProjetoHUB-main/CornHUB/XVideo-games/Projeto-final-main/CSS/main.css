@@ -32,7 +32,37 @@ body{
   border-bottom:1px solid var(--border);
   position:sticky;top:0;z-index:50;
   box-shadow:0 4px 20px rgba(0,0,0,.4);
+  gap:20px;
 }
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(255, 0, 43, 0.1);
+  color: var(--red);
+  text-decoration: none;
+  border: 1px solid var(--red);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.back-btn:hover {
+  background: var(--red);
+  color: #fff;
+  transform: translateX(-2px);
+  box-shadow: 0 4px 12px rgba(225, 15, 36, 0.3);
+}
+
+.back-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
 .logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:800;letter-spacing:.5px}
 .logo-mark{
   width:36px;height:36px;border-radius:8px;
@@ -201,7 +231,9 @@ body{
 
 @media(max-width:720px){
   .nav{display:none}
-  .topbar{padding:8px 12px}
+  .topbar{padding:8px 12px;gap:12px}
+  .back-btn{width:36px;height:36px}
+  .back-btn svg{width:16px;height:16px}
   .balance{padding:6px 6px 6px 12px;gap:8px}
   .balance-value{font-size:14px}
   .hero h1{font-size:32px}

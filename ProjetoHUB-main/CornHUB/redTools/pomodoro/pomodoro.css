@@ -1,14 +1,22 @@
+
+
 /* Estilos gerais */
 * {
 	box-sizing: border-box;
+}
+
+:root {
+	--btn-bg: rgba(255,255,255,0.14);
+	--btn-color: #ffffff;
+	--btn-hover: rgba(255,255,255,0.22);
 }
 
 body {
 	margin: 0;
 	min-height: 100vh;
 	font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-	background: #f4f5fb;
-	color: #1f2937;
+	background: transparent;
+	color: #ffffff;
 	display: grid;
 	place-items: center;
 	padding: 1.5rem;
@@ -16,7 +24,10 @@ body {
 
 body.dark {
 	background: #111827;
-	color: #e5e7eb;
+	color: #ffffff;
+	--btn-bg: rgba(17,24,39,0.6);
+	--btn-color: #ffffff;
+	--btn-hover: rgba(17,24,39,0.7);
 }
 
 .cronometro {
@@ -40,7 +51,7 @@ header h2 {
 }
 
 .painel {
-	background: #ffffff;
+	background: transparent;
 	border-radius: 1.5rem;
 	box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
 	padding: 2rem;
@@ -49,7 +60,7 @@ header h2 {
 }
 
 body.dark .painel {
-	background: #1f2937;
+	background: transparent;
 	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
 }
 
@@ -82,8 +93,8 @@ button {
 
 .tema {
 	padding: 0.75rem 1rem;
-	background: #e5e7eb;
-	color: #111827;
+	background: var(--btn-bg);
+	color: var(--btn-color);
 	transition: background 0.2s ease, color 0.2s ease;
 }
 
@@ -97,6 +108,8 @@ body.dark .tema {
 	font-size: clamp(4rem, 8vw, 6rem);
 	letter-spacing: 0.05em;
 	text-align: center;
+	color: #ffffff;
+	text-shadow: #111827 4px 4px 8px;
 }
 
 .botoes {
@@ -108,7 +121,7 @@ body.dark .tema {
 
 button {
 	padding: 0.95rem 1.3rem;
-	background: #3b82f6;
+	background: #9a6503;
 	color: white;
 	font-weight: 700;
 	transition: transform 0.2s ease, background 0.2s ease;
@@ -123,16 +136,16 @@ button:active {
 }
 
 button#pausar {
-	background: #f97316;
+	background: #bc7700c7;
 }
 
 button#resetar {
-	background: #ef4444;
+	background: #ac6508;
 }
 
 button#configurar,
 button#salvarConfig {
-	background: #6d28d9;
+	background: #ab7003;
 	width: 100%;
 }
 
@@ -143,7 +156,7 @@ body.dark button {
 .configuracoes {
 	display: none;
 	gap: 1rem;
-	background: rgba(59, 130, 246, 0.08);
+	background: transparent;
 	padding: 1rem;
 	border-radius: 1rem;
 }
@@ -161,16 +174,39 @@ body.dark .configuracoes {
 .configuracoes input {
 	width: 100%;
 	padding: 0.85rem 1rem;
-	background: #f3f4f6;
-	color: #111827;
-	border: 1px solid #d1d5db;
+	background: transparent;
+	color: #ffffff;
+	border: 1px solid rgba(255,255,255,0.12);
 	margin-bottom: 1rem;
 }
 
 body.dark .configuracoes input {
-	background: #111827;
-	color: #e5e7eb;
-	border-color: #374151;
+	background: transparent;
+	color: #ffffff;
+	border-color: rgba(255,255,255,0.12);
+}
+
+/* Vídeo de fundo */
+#bg-video {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -1;
+	object-fit: cover;
+	pointer-events: none;
+}
+
+/* Garantir que o conteúdo fique acima do vídeo */
+header,
+.cronometro,
+.painel {
+	position: relative;
+	z-index: 1;
 }
 
 @media (max-width: 420px) {
@@ -184,3 +220,6 @@ body.dark .configuracoes input {
 		width: 100%;
 	}
 }
+
+
+
