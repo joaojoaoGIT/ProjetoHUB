@@ -3,7 +3,7 @@
 ## 📌 Navegação Rápida
 
 - 🎹 [Tung Tung Sol Lá Sí](#-tung-tung-sol-lá-sí)
-- 🍅 [Pomodoro Sahur](#-pomodoro)
+- 🍅 [Pomodoro Sahur](#-🍅-Pomodoro-Sahur)
 - 💡 [Simulador de Interruptor](#-simulador-de-interruptor)
 - 💰 [ Cofre Virtual](#-💰-Cofre-Virtual)
 
