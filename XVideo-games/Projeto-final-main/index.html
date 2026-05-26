@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>X Video-Games</title>
+  <link rel="stylesheet" href="CSS/main.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="../../index.html" class="back-btn" title="Voltar ao CornHub">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    </a>
+    <div class="logo">
+      <img src="assets/img/logo.png" alt="RedVault" class="brand-logo" />
+    </div>
+    <nav class="nav">
+      <a href="#" class="active">Jogos</a>
+    </nav>
+    <div class="balance" title="Seu saldo">
+      <span class="balance-label">Saldo</span>
+      <span class="balance-value">R$ <span id="balance">2.000,00</span></span>
+      <button id="deposit" class="btn-deposit">Depositar</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Bem-vindo ao <span class="accent">XVIDEO-GAMES</span></h1>
+      <p>Jogue com sabedoria e ganhe na vida <span style="color: rgb(133, 4, 4)"> (muitos traumas)</span></p>
+    </section>
+
+    <section class="games">
+      <article class="game-card">
+        <div class="game-logo logo-jokenpo">
+          <img src="assets/img/logoJokenpo (1).png" alt="Jokenpô">
+        </div>
+        <h2>Jokenpô</h2>
+        <p>Dispute sua sorte no famoso Pedra, Papel e Tesoura</p>
+        <button class="btn-play" data-game="Jokenpô" data-page="jokenpo.html">Jogar Agora</button>
+      </article>
+
+      <article class="game-card">
+        <div class="game-logo logo-dados">
+          <img src="assets/img/logoDados.png" alt="Dados">
+        </div>
+        <h2>Dados</h2>
+        <p>Role os dados e teste sua sorte!</p>
+        <button class="btn-play" data-game="Dados" data-page="dados.html">Jogar Agora</button>
+      </article>
+
+      <article class="game-card">
+        <div class="game-logo logo-blackjack">
+           <img src="assets/img/logoCaraOuCoroa.png" alt="Cara ou Coroa">
+        </div>
+        <h2>Cara ou Coroa</h2>
+        <p>Teste sua sorte e veja se a moeda caiu na cara ou na coroa!</p>
+        <button class="btn-play" data-game="Cara ou Coroa" data-page="caraocoroa.html">Jogar Agora</button>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+       <img src="assets/img/logo.png" alt="RedVault" class="brand-logo" />
+        <p>Jogue com responsabilidade.</p>
+      </div>
+      <div>
+        <h4>Feito por: </h4>
+        <a href="https://github.com/joaojoaoGIT">João Pedro Cassanego</a>
+        <a href="https://github.com/LoliComunista">Jorge Artur Caiuruga</a>
+        <a href="https://github.com/arthurschmeling">Arthur Schmeling</a>
+      </div>
+      
+      <div>
+        <h4>Intuito</h4>
+        <div class="pay-badges">
+          <p>Fizemos este site com intuito de melhorarmos nossas habilidades em JS, HTML E CSS.</p> 
+      </div>
+    
+  </footer>
+
+  <script src="js/index.js"></script>
+</body>
+
+</html>
