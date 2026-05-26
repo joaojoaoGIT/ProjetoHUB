@@ -503,7 +503,7 @@ A ideia é evitar fadiga mental e aumentar a produtividade.
 Clone o projeto:
 
 ```bash
-git clone https://github.com/seuusuario/pomodoro.git
+git clone https://github.com/joaojoaoGIT/ProjetoHUB/tree/main/redTools/pomodoro
 ```
 
 Entre na pasta:
