@@ -97,7 +97,7 @@ Funcionamento
 Clone o projeto:
 
 ```bash
-git clone https://github.com/seuusuario/pomodoro.git](https://github.com/joaojoaoGIT/ProjetoHUB/blob/main/redTools/pomodoro/README.md
+git clone https://github.com/joaojoaoGIT/ProjetoHUB/blob/main/redTools/pomodoro/README.md
 ```
 
 Entre na pasta:
