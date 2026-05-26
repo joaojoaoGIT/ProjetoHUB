@@ -1,0 +1,349 @@
+# 🎹 Tung Tung Sol Lá Sí
+
+## 📌 Sobre o Projeto
+
+O  Tung Tung Sol Lá Sí  **Studio** é um teclado musical virtual desenvolvido em JavaScript puro utilizando a biblioteca **WebAudioFont**, permitindo tocar instrumentos diretamente pelo teclado do computador.
+
+O sistema possui:
+
+* Piano virtual
+* Flauta virtual
+* Violão virtual
+* Pads de bateria
+* Gravação de faixas
+* Reprodução das gravações
+* Controle de oitava
+* Controle de volume das trilhas
+* Sistema de mute
+* Tema escuro/claro
+* Interface interativa responsiva
+
+---
+
+# 🚀 Tecnologias Utilizadas
+
+* HTML5
+* CSS3
+* JavaScript Vanilla
+* Web Audio API
+* WebAudioFont
+
+---
+
+# 🎵 Funcionamento do Sistema
+
+O projeto funciona através da **Web Audio API**, que permite gerar e reproduzir sons diretamente no navegador.
+
+Cada tecla do teclado físico é associada a uma nota musical MIDI. Quando o usuário pressiona uma tecla:
+
+1. O sistema identifica qual nota deve tocar
+2. Carrega o instrumento necessário
+3. Reproduz o som usando WebAudioFont
+4. Atualiza visualmente o teclado
+5. Registra os dados caso esteja gravando
+
+---
+
+# 🧠 Estrutura Principal do Código
+
+---
+
+# 1️⃣ CONFIGURAÇÃO DOS INSTRUMENTOS
+
+```js
+const SOUNDS = {
+  piano: {
+    variable: '_tone_0000_JCLive_sf2_file',
+    url: 'https://surikov.github.io/webaudiofontdata/sound/0000_JCLive_sf2_file.js'
+  }
+}
+```
+
+## O que essa parte faz?
+
+Essa estrutura define:
+
+* Nome do instrumento
+* Variável usada pelo WebAudioFont
+* URL do banco de áudio
+
+Cada instrumento possui um arquivo `.js` contendo os samples de som.
+
+---
+
+# 2️⃣ CONFIGURAÇÃO DAS TECLAS
+
+```js
+const OCTAVE_KEYS = [
+  { note: 'C', isBlack: false, kb: 'a' },
+  { note: 'C#', isBlack: true, kb: 'w' }
+]
+```
+
+## O que essa parte faz?
+
+Mapeia:
+
+* Nota musical
+* Tipo da tecla (branca/preta)
+* Tecla do teclado físico correspondente
+
+Exemplo:
+
+| Tecla | Nota |
+| ----- | ---- |
+| A     | C    |
+| W     | C#   |
+| S     | D    |
+
+---
+
+# 3️⃣ SISTEMA DE ÁUDIO
+
+```js
+function getAudioContext() {
+  audioCtx = new AudioContext();
+}
+```
+
+## O que faz?
+
+Cria o contexto principal de áudio do navegador.
+
+Esse contexto:
+
+* controla reprodução sonora
+* controla volume
+* conecta os instrumentos ao sistema de saída de áudio
+
+---
+
+# 4️⃣ CARREGAMENTO DOS SONS
+
+```js
+function loadSound(soundKey) {
+  p.loader.startLoad(ctx, sound.url, sound.variable);
+}
+```
+
+## O que faz?
+
+Carrega dinamicamente os instrumentos somente quando necessário.
+
+Isso melhora:
+
+* desempenho
+* carregamento inicial
+* consumo de memória
+
+---
+
+# 5️⃣ REPRODUÇÃO DAS NOTAS
+
+```js
+function playNote(soundKey, pitch, volume, duration)
+```
+
+## Função principal do teclado
+
+Essa função:
+
+* recebe a nota MIDI
+* define volume
+* define duração
+* toca o instrumento selecionado
+
+Ela utiliza:
+
+```js
+queueWaveTable()
+```
+
+do WebAudioFont para reproduzir o áudio.
+
+---
+
+# 6️⃣ SISTEMA DE GRAVAÇÃO
+
+```js
+recordNotes.push({
+  instrument: currentInstrument,
+  noteIndex: midiNote,
+  time: startTime,
+  duration: duration
+});
+```
+
+## Como funciona?
+
+Enquanto o usuário grava:
+
+* o sistema salva:
+
+  * instrumento
+  * nota
+  * tempo
+  * duração
+
+Depois, todas as notas são organizadas em uma faixa.
+
+---
+
+# 7️⃣ REPRODUÇÃO DAS FAIXAS
+
+```js
+scheduled.sort((a, b) => a.time - b.time);
+```
+
+## O que acontece aqui?
+
+As notas gravadas são:
+
+1. organizadas por tempo
+2. executadas em sequência
+3. reproduzidas sincronizadamente
+
+Isso cria a reprodução completa da música gravada.
+
+---
+
+# 8️⃣ RENDERIZAÇÃO VISUAL
+
+```js
+renderPianoKeyboard()
+renderDrumPads()
+renderTracks()
+```
+
+## Responsabilidade
+
+Atualizar a interface em tempo real:
+
+* teclas pressionadas
+* pads ativos
+* timeline das faixas
+* animações
+* progresso da reprodução
+
+---
+
+# 9️⃣ CONTROLE DOS INSTRUMENTOS
+
+```js
+setInstrument(inst)
+```
+
+## O que faz?
+
+Troca o instrumento atual do teclado.
+
+Também:
+
+* altera a interface
+* pré-carrega os sons
+* muda entre piano e bateria
+
+---
+
+# 🔟 SISTEMA DE EVENTOS
+
+```js
+document.addEventListener('keydown')
+```
+
+## Função
+
+Captura as teclas do teclado físico do usuário.
+
+Quando uma tecla é pressionada:
+
+* identifica a nota
+* chama `handleNoteOn()`
+* reproduz o som
+
+Ao soltar:
+
+* chama `handleNoteOff()`
+
+---
+
+# 🎚️ Recursos Extras
+
+## ✔ Controle de Oitava
+
+Permite mudar a região musical do teclado.
+
+---
+
+## ✔ Controle de Volume
+
+Cada faixa possui volume individual.
+
+---
+
+## ✔ Sistema de Mute
+
+Permite silenciar trilhas específicas.
+
+---
+
+## ✔ Tema Claro/Escuro
+
+Interface dinâmica usando:
+
+```js
+document.documentElement.setAttribute()
+```
+
+---
+
+# 📂 Organização Geral do Código
+
+O código foi dividido em módulos lógicos:
+
+| Seção             | Responsabilidade   |
+| ----------------- | ------------------ |
+| CONFIG            | Configurações      |
+| STATE             | Variáveis globais  |
+| AUDIO ENGINE      | Sistema de áudio   |
+| NOTE HANDLING     | Controle das notas |
+| KEYBOARD HANDLING | Captura do teclado |
+| RENDERING         | Interface visual   |
+| CONTROLS          | Botões e ações     |
+| INIT              | Inicialização      |
+
+---
+
+# 🏁 Inicialização do Projeto
+
+```js
+waitForWebAudioFont();
+```
+
+O sistema aguarda o carregamento completo da biblioteca antes de iniciar.
+
+Depois executa:
+
+```js
+init();
+```
+
+que:
+
+* conecta eventos
+* renderiza interface
+* carrega o piano inicial
+
+---
+
+# ✅ Resultado Final
+
+O projeto entrega uma experiência de estúdio musical no navegador, permitindo:
+
+* tocar instrumentos
+* gravar músicas
+* reproduzir faixas
+* editar trilhas
+* interagir visualmente em tempo real
+
+Tudo utilizando apenas JavaScript puro e APIs nativas do navegador.

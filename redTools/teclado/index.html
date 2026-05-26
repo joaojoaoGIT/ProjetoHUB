@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tung Tung Sol Lá Sí — Teclado Musical</title>
+  <meta name="description" content="Studio musical interativo com piano, flauta, violão e bateria. Grave e edite suas músicas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-logo">
+        <svg class="icon-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18V5l12-2v13"/>
+          <circle cx="6" cy="18" r="3"/>
+          <circle cx="18" cy="16" r="3"/>
+        </svg>
+        <div class="header-title">
+          <h1>Tung Tung Sol Lá Sí</h1>
+          <span class="header-subtitle">Estudio Musical</span>
+        </div>
+      </div>
+      <div class="last-played" id="lastPlayed" style="display:none;">
+        <span class="last-played-label">Última nota:</span>
+        <span class="last-played-note" id="lastPlayedNote">-</span>
+      </div>
+      <div class="recording-indicator" id="recordingIndicator" style="display:none;">
+        <span class="rec-dot"></span>
+        <span>GRAVANDO</span>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <!-- Controls Bar -->
+      <div class="controls-bar">
+        <div class="control-group">
+          <label class="control-label">Instrumento</label>
+          <div class="instrument-tabs" id="instrumentTabs">
+            <button class="inst-tab active" data-instrument="piano">
+              <span class="inst-icon">🎹</span>
+              <span class="inst-name">Piano</span>
+            </button>
+            <button class="inst-tab" data-instrument="flute">
+              <span class="inst-icon">🎵</span>
+              <span class="inst-name">Flauta</span>
+            </button>
+            <button class="inst-tab" data-instrument="guitar">
+              <span class="inst-icon">🎸</span>
+              <span class="inst-name">Violão</span>
+            </button>
+            <button class="inst-tab" data-instrument="drums">
+              <span class="inst-icon">🥁</span>
+              <span class="inst-name">Bateria</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="control-group" id="octaveControl">
+          <label class="control-label">Oitava base</label>
+          <div class="octave-control">
+            <button class="octave-btn" id="octaveDown">–</button>
+            <span class="octave-display" id="octaveDisplay">4</span>
+            <button class="octave-btn" id="octaveUp">+</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Gravação</label>
+          <button class="record-btn" id="recordBtn">
+            <svg class="icon-circle" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+            <span>Gravar</span>
+          </button>
+        </div>
+
+        <div class="control-group theme-toggle-group">
+          <button class="theme-toggle" id="themeToggle" title="Alternar tema">
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Instrument Area -->
+      <div class="instrument-area wood-panel" id="instrumentArea">
+        <!-- Piano Keyboard -->
+        <div class="piano-keyboard-container" id="pianoContainer">
+          <div class="piano-keyboard" id="pianoKeyboard"></div>
+          <div class="keyboard-hint">
+            <span>Teclas do PC: <strong>A S D F G H J</strong> (oitava 1) &nbsp;|&nbsp; <strong>Z X C V B N M</strong> (oitava 2)</span>
+            <span>Sustenidos: <strong>W E T Y U</strong> (oitava 1) &nbsp;|&nbsp; <strong>Q 2 R 5 6</strong> (oitava 2)</span>
+          </div>
+        </div>
+
+        <!-- Drum Pads -->
+        <div class="drum-container" id="drumsContainer" style="display:none;">
+          <div class="drum-grid" id="drumGrid"></div>
+          <div class="keyboard-hint">
+            <span>Teclas do PC: <strong>Q W E R T Y</strong> (linha superior) &nbsp;|&nbsp; <strong>A S D F</strong> (linha do meio)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Studio Section -->
+      <div class="studio-section">
+        <div class="studio-header">
+          <h2>Sua Orquestra</h2>
+          <span class="studio-sub" id="studioSub">0 faixas</span>
+        </div>
+
+        <!-- Transport -->
+        <div class="sequencer-transport">
+          <div class="transport-controls">
+            <button class="transport-btn play-btn" id="playBtn">
+              <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              <span>Reproduzir</span>
+            </button>
+            <button class="transport-btn clear-btn" id="clearBtn">
+              <svg class="icon-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="3 6 5 6 21 6"/>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              </svg>
+              <span>Limpar</span>
+            </button>
+          </div>
+          <div class="transport-time">
+            <span class="time-display" id="timeDisplay">0:00.0</span>
+            <span class="time-sep">/</span>
+            <span class="time-total" id="timeTotal">0:00.0</span>
+          </div>
+        </div>
+
+        <!-- Track List -->
+        <div class="track-list" id="trackList">
+          <div class="sequencer-empty" id="emptyState">
+            <svg class="icon-music-large" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.4">
+              <path d="M9 18V5l12-2v13"/>
+              <circle cx="6" cy="18" r="3"/>
+              <circle cx="18" cy="16" r="3"/>
+            </svg>
+            <p>Nenhuma faixa gravada ainda.</p>
+            <p class="hint">Pressione <strong>Gravar</strong> e toque algumas notas!</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      <span>Tung Tung Sol Lá Sí — O seu canto músical!</span>
+    </footer>
+  </div>
+
+  <!-- WebAudioFont Player -->
+  <script src="https://surikov.github.io/webaudiofont/npm/dist/WebAudioFontPlayer.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

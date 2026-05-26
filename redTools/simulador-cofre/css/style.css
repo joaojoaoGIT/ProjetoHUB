@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Sora:wght@400;500;600&display=swap');
+
+:root {
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f5f5f5;
+  --color-background-tertiary: #ececec;
+
+  --color-text-primary: #111111;
+  --color-text-secondary: #444444;
+  --color-text-tertiary: #777777;
+
+  --color-border-primary: #999999;
+  --color-border-secondary: #cccccc;
+  --color-border-tertiary: #dddddd;
+
+  --border-radius-md: 12px;
+  --border-radius-lg: 18px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: var(--color-background-tertiary);
+}
+
+#app {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--color-text-primary);
+}
+
+.card {
+  background: var(--color-background-primary);
+  border: 1px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 1.25rem;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: 8px;
+}
+
+.saldo-valor {
+  font-family: 'DM Mono', monospace;
+  font-size: 38px;
+  font-weight: 500;
+  transition: transform 0.12s ease;
+}
+
+.saldo-valor.bump {
+  transform: scale(1.05);
+}
+
+.total-moedas {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  margin-top: 2px;
+  font-family: 'DM Mono', monospace;
+}
+
+.cofre-area {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0 0.5rem;
+  height: 160px;
+}
+
+#coin-stage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.moedas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.btn-moeda {
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 14px 6px 10px;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.1s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-moeda:hover {
+  background: var(--color-background-tertiary);
+}
+
+.btn-moeda:active {
+  transform: scale(0.93);
+}
+
+.moeda-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  position: relative;
+}
+
+.moeda-10 {
+  background: #C8C0A8;
+  border: 3px solid #A89878;
+}
+
+.moeda-25,
+.moeda-50 {
+  background: #D4D4D4;
+  border: 3px solid #B4B4B4;
+}
+
+.moeda-100 {
+  background: #D4A43C;
+  border: 3px solid #C08820;
+}
+
+.moeda-100 .inner-ring {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #C08820;
+  background: #E8B030;
+}
+
+.moeda-label {
+  font-size: 11px;
+}
+
+.moeda-count {
+  font-size: 10px;
+  color: var(--color-text-tertiary);
+  font-family: 'DM Mono', monospace;
+}
+
+.sacar-row {
+  margin-bottom: 10px;
+}
+
+.sacar-row input {
+  width: 100%;
+  height: 38px;
+  padding: 0 12px;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border-secondary);
+  font-family: 'DM Mono', monospace;
+}
+
+.acoes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.btn-sacar,
+.btn-esvaziar {
+  padding: 10px;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  border: none;
+  font-weight: 500;
+}
+
+.btn-sacar {
+  background: #E6F1FB;
+  color: #185FA5;
+}
+
+.btn-esvaziar {
+  background: #FCEBEB;
+  color: #A32D2D;
+}
+
+.msg {
+  font-size: 12px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.msg.erro {
+  color: #A32D2D;
+}
+
+.msg.ok {
+  color: #0F6E56;
+}
+
+.animated-coin {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: coin-fall 0.40s forwards;
+}
+
+@keyframes coin-fall {
+  0% {
+    transform: translateY(-20px) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(130px) rotate(290deg) scale(0.15);
+    opacity: 0;
+  }
+}
