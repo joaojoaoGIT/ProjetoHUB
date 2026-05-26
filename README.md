@@ -1,38 +1,46 @@
-🚀 Projeto CornHub
+# 🚀 Projeto CornHub
 
 Este repositório reúne diversos projetos desenvolvidos utilizando HTML, CSS e JavaScript com foco em aprendizado, interatividade, manipulação de DOM, áudio, lógica de programação e experiência do usuário.
 
-💡 Simulador de Interruptor
+---
+
+# 💡 Simulador de Interruptor
 
 Um projeto interativo desenvolvido com HTML, CSS e JavaScript que simula um interruptor ligando e desligando uma lâmpada em um ambiente estilizado.
 
 O sistema altera dinamicamente:
 
-iluminação da cena
-aparência do personagem
-estado visual do interruptor
-ambiente da página
+* iluminação da cena
+* aparência do personagem
+* estado visual do interruptor
+* ambiente da página
 
 Ideal para estudos de:
 
-DOM
-Eventos
-Manipulação de classes
-Interatividade com JavaScript
-🖼️ Demonstração
-💡 Luz acesa
+* DOM
+* Eventos
+* Manipulação de classes
+* Interatividade com JavaScript
 
-tung
+## 🖼️ Demonstração
 
-🌑 Luz apagada
+### 💡 Luz acesa
 
-sahur
+`tung`
 
-🚀 Tecnologias Utilizadas
-HTML5
-CSS3
-JavaScript
-📂 Estrutura do Projeto
+### 🌑 Luz apagada
+
+`sahur`
+
+## 🚀 Tecnologias Utilizadas
+
+* HTML5
+* CSS3
+* JavaScript
+
+## 📂 Estrutura do Projeto
+
+```txt
 simulador-interruptor/
 │
 ├── index.html
@@ -47,21 +55,25 @@ simulador-interruptor/
 └── img/
     ├── lampada-apagada.png
     └── lampada-acesa.png
-🍅 Pomodoro Timer
+```
+
+---
+
+# 🍅 Pomodoro Timer
 
 Um cronômetro baseado na técnica Pomodoro para melhorar foco e produtividade.
 
-Sobre o método Pomodoro
+## Sobre o método Pomodoro
 
 A Técnica Pomodoro foi criada por Francesco Cirillo e consiste em dividir o tempo em ciclos:
 
-25 minutos de foco total
-5 minutos de pausa curta
-Após alguns ciclos: pausa maior
+* 25 minutos de foco total
+* 5 minutos de pausa curta
+* Após alguns ciclos: pausa maior
 
 A ideia é evitar fadiga mental e aumentar a produtividade.
 
-✨ Funcionalidades
+## ✨ Funcionalidades
 
 ✅ Temporizador de foco e descanso
 ✅ Iniciar, pausar e resetar
@@ -70,41 +82,54 @@ A ideia é evitar fadiga mental e aumentar a produtividade.
 ✅ Som ao finalizar um ciclo
 ✅ Interface responsiva
 
-🚀 Tecnologias utilizadas
-HTML5
-CSS3
-JavaScript
-🖼️ Demonstração
+## 🚀 Tecnologias utilizadas
+
+* HTML5
+* CSS3
+* JavaScript
+
+## 🖼️ Demonstração
 
 Funcionamento
 
-▶️ Como executar
+## ▶️ Como executar
 
 Clone o projeto:
 
+```bash
 git clone https://github.com/seuusuario/pomodoro.git
+```
 
 Entre na pasta:
 
+```bash
 cd pomodoro
+```
 
 Abra:
 
+```txt
 index.html
-🧠 Lógica usada no cronômetro
-setInterval()
+```
 
-O setInterval() executa uma função repetidamente em um intervalo de tempo.
+## 🧠 Lógica usada no cronômetro
+
+### setInterval()
+
+O `setInterval()` executa uma função repetidamente em um intervalo de tempo.
 
 Exemplo:
 
+```javascript
 intervaloId = setInterval(() => {
    tempoAtualSegundos--;
    atualizarDisplay();
 },1000);
+```
 
 Fluxo:
 
+```txt
 Espera 1 segundo
 ↓
 Diminui 1 segundo
@@ -112,23 +137,29 @@ Diminui 1 segundo
 Atualiza tela
 ↓
 Repete até parar
-clearInterval()
+```
 
-O clearInterval() interrompe a execução do intervalo.
+### clearInterval()
+
+O `clearInterval()` interrompe a execução do intervalo.
 
 Exemplo:
 
+```javascript
 clearInterval(intervaloId);
+```
 
 Foi utilizado em:
 
-Pausar cronômetro
-Resetar
-Quando o tempo chega em zero
+* Pausar cronômetro
+* Resetar
+* Quando o tempo chega em zero
 
 Sem isso vários temporizadores seriam criados ao clicar em "Iniciar" várias vezes.
 
-Fluxo da lógica
+## Fluxo da lógica
+
+```txt
 Iniciar
    ↓
 setInterval()
@@ -142,18 +173,23 @@ Tempo chegou em 0?
 Sim → clearInterval()
    ↓
 Troca Foco/Pausa
-🎹 Tung Tung Sol Lá Sí
+```
+
+---
+
+# 🎹 Tung Tung Sol Lá Sí
 
 Um estúdio musical interativo desenvolvido com JavaScript Vanilla, Web Audio API e WebAudioFont.
 
 O projeto permite:
 
-tocar instrumentos em tempo real
-utilizar drum pads
-gravar tracks
-reproduzir sequências
-alternar entre instrumentos diretamente no navegador
-✨ Features
+* tocar instrumentos em tempo real
+* utilizar drum pads
+* gravar tracks
+* reproduzir sequências
+* alternar entre instrumentos diretamente no navegador
+
+## ✨ Features
 
 🎹 Piano virtual interativo
 🥁 Drum pads funcionais
@@ -166,190 +202,238 @@ alternar entre instrumentos diretamente no navegador
 ⚡ Sem frameworks
 🔊 Áudio em tempo real
 
-📂 Estrutura do Projeto
+## 📂 Estrutura do Projeto
+
+```txt
 project/
 │
 ├── index.html
 ├── style.css
 ├── script.js
 └── README.md
-🚀 Tecnologias Utilizadas
-Tecnologia	Função
-HTML5	Estrutura da aplicação
-CSS3	Interface e responsividade
-JavaScript Vanilla	Lógica do projeto
-Web Audio API	Sistema de áudio
-WebAudioFont	Instrumentos musicais
-🔊 Sistema de Áudio
+```
+
+## 🚀 Tecnologias Utilizadas
+
+| Tecnologia         | Função                     |
+| ------------------ | -------------------------- |
+| HTML5              | Estrutura da aplicação     |
+| CSS3               | Interface e responsividade |
+| JavaScript Vanilla | Lógica do projeto          |
+| Web Audio API      | Sistema de áudio           |
+| WebAudioFont       | Instrumentos musicais      |
+
+## 🔊 Sistema de Áudio
 
 O projeto utiliza WebAudioFont para reproduzir instrumentos reais diretamente no navegador utilizando soundfonts.
 
 CDN:
 
+```html
 <script src="https://surikov.github.io/webaudiofont/npm/dist/WebAudioFontPlayer.js"></script>
+```
 
 Exemplo:
 
+```javascript
 const SOUNDS = {
   piano: {
     variable: '_tone_0000_JCLive_sf2_file',
     url: 'https://surikov.github.io/webaudiofontdata/sound/0000_JCLive_sf2_file.js'
   }
 }
+```
 
 Cada instrumento possui:
 
-variável global
-soundfont
-sample de áudio
-notas MIDI
-🎵 Reprodução de Notas
+* variável global
+* soundfont
+* sample de áudio
+* notas MIDI
+
+## 🎵 Reprodução de Notas
 
 Utiliza:
 
-queueWaveTable()
+`queueWaveTable()`
 
 Recebe:
 
-contexto de áudio
-instrumento carregado
-pitch MIDI
-duração
-volume
+* contexto de áudio
+* instrumento carregado
+* pitch MIDI
+* duração
+* volume
 
 O sistema utiliza:
 
-AudioContext
-GainNode
-Buffers
-WaveTables
-🎹 Piano Virtual
+* AudioContext
+* GainNode
+* Buffers
+* WaveTables
+
+## 🎹 Piano Virtual
 
 Possui:
 
-duas oitavas
-suporte a mouse
-suporte touch
-teclado físico QWERTY
-animações
-teclas brancas e pretas
+* duas oitavas
+* suporte a mouse
+* suporte touch
+* teclado físico QWERTY
+* animações
+* teclas brancas e pretas
 
 Mapeamento:
 
-Tecla	Nota
-A	C
-W	C#
-S	D
-E	D#
+| Tecla | Nota |
+| ----- | ---- |
+| A     | C    |
+| W     | C#   |
+| S     | D    |
+| E     | D#   |
 
 Eventos:
 
+```javascript
 document.addEventListener('keydown')
 document.addEventListener('keyup')
-🥁 Drum Pads
+```
+
+## 🥁 Drum Pads
 
 Pads:
 
-kick
-snare
-hi-hat
-open hat
-crash
+* kick
+* snare
+* hi-hat
+* open hat
+* crash
 
 Exemplo:
 
+```javascript
 {
   name:'Bumbo',
   key:'q',
   sound:'kick'
 }
-⏺️ Sistema de Gravação
+```
+
+## ⏺️ Sistema de Gravação
 
 Salva:
 
+```javascript
 {
   instrument,
   noteIndex,
   time,
   duration
 }
+```
 
 Permite:
 
-reprodução posterior
-múltiplas tracks
-timeline
-sequenciamento
-▶️ Sequencer / Playback
+* reprodução posterior
+* múltiplas tracks
+* timeline
+* sequenciamento
+
+## ▶️ Sequencer / Playback
 
 Utiliza:
 
+```javascript
 requestAnimationFrame()
+```
 
 Possui:
 
-timeline visual
-múltiplas tracks
-mute individual
-volume individual
-reprodução sincronizada
-🎨 Sistema CSS
+* timeline visual
+* múltiplas tracks
+* mute individual
+* volume individual
+* reprodução sincronizada
+
+## 🎨 Sistema CSS
 
 Utiliza:
 
-CSS Variables
-Design Tokens
-Gradients
-Shadows
-Glassmorphism
-Responsividade
+* CSS Variables
+* Design Tokens
+* Gradients
+* Shadows
+* Glassmorphism
+* Responsividade
 
 Temas:
 
+```css
 :root,
 [data-theme="dark"]
+```
+
+```css
 [data-theme="light"]
+```
 
 Troca:
 
+```javascript
 document.documentElement.setAttribute()
-📱 Responsividade
+```
+
+## 📱 Responsividade
 
 Media Query:
 
+```css
 @media (max-width:900px)
-🧠 Organização do Código
-script.js
-CONFIG
-STATE
-AUDIO ENGINE
-NOTE HANDLING
-KEYBOARD HANDLING
-RENDERING
-CONTROLS
-INIT
-style.css
-DESIGN TOKENS
-LIGHT THEME
-APP LAYOUT
-CONTROLS BAR
-PIANO KEYBOARD
-DRUM PADS
-SEQUENCER
-RESPONSIVE
-⚡ Performance
+```
+
+## 🧠 Organização do Código
+
+### script.js
+
+* CONFIG
+* STATE
+* AUDIO ENGINE
+* NOTE HANDLING
+* KEYBOARD HANDLING
+* RENDERING
+* CONTROLS
+* INIT
+
+### style.css
+
+* DESIGN TOKENS
+* LIGHT THEME
+* APP LAYOUT
+* CONTROLS BAR
+* PIANO KEYBOARD
+* DRUM PADS
+* SEQUENCER
+* RESPONSIVE
+
+## ⚡ Performance
 
 Otimizações:
 
-preload de instrumentos
-AudioContext único
-GainNode master
-volume global
-carregamento assíncrono
-gerenciamento de notas ativas
-📸 Imagens
-Interface Principal
-Drum Pads
-Tracks
-Tema Light
-Responsividade
+* preload de instrumentos
+* AudioContext único
+* GainNode master
+* volume global
+* carregamento assíncrono
+* gerenciamento de notas ativas
+
+## 📸 Imagens
+
+1. Interface Principal
+2. Drum Pads
+3. Tracks
+4. Tema Light
+5. Responsividade
+
+## 👨‍💻 Autor
+
+João Pedro Cassanego Reichert
