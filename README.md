@@ -457,7 +457,7 @@ O projeto utiliza otimizações como:
 <img width="299" height="549" alt="image" src="https://github.com/user-attachments/assets/c8cce31b-b8b7-4f0e-8abb-1cc86a9d9013" />
 
 
----
+- 🚀 [Voltar ao inicio](#-🚀-Projeto-CornHub)
 
 # 🍅 Pomodoro Sahur
 
@@ -585,6 +585,10 @@ Sim → clearInterval()
    ↓
 Troca Foco/Pausa
 ```
+
+- 🚀 [Voltar ao inicio](#-🚀-Projeto-CornHub)
+
+  
 # 💡 Simulador de Interruptor
 
 Um projeto interativo desenvolvido com **HTML, CSS e JavaScript** que simula um interruptor ligando e desligando uma lâmpada em um ambiente estilizado.
