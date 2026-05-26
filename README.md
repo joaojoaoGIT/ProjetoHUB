@@ -1,4 +1,4 @@
-🚀 Coleção de Projetos JavaScript Interativos
+🚀 Projeto CornHub
 
 Este repositório reúne diversos projetos desenvolvidos utilizando HTML, CSS e JavaScript com foco em aprendizado, interatividade, manipulação de DOM, áudio, lógica de programação e experiência do usuário.
 
