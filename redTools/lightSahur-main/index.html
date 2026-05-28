@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Luz</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+<div class="room-wrapper">
+
+  <div class="room dark" id="room">
+    <div class="wall-bg wall-dark"></div>
+
+    <!-- Lâmpada -->
+    <img src="img/luminaria.png" alt="Luminária" class="lamp-img">
+
+    <!-- Cama -->
+    <img src="img/cama.png" alt="Cama" class="bed-img">
+
+    <!-- Guarda roupa -->
+    <div class="wardrobe">
+      <img src="img/armario.png" alt="Guarda-roupa" class="wardrobe-img">
+    </div>
+
+    <!-- Interruptor -->
+    <div class="switch-plate" id="switchBtn">
+      <div class="switch-toggle"></div>
+    </div>
+
+    <!-- Piso -->
+    <div class="floor">
+      <div class="floor-plank" style="left:0; width:80px"></div>
+      <div class="floor-plank" style="left:80px; width:100px"></div>
+      <div class="floor-plank" style="left:180px; width:90px"></div>
+      <div class="floor-plank" style="left:270px; width:110px"></div>
+      <div class="floor-plank" style="left:380px; width:95px"></div>
+      <div class="floor-plank" style="left:475px; width:85px"></div>
+    </div>
+
+    <div class="baseboard"></div>
+
+    <!-- Personagem -->
+    <div class="character" id="character">
+      <img src="img/tung_triste.png" alt="Tung triste" class="character-img" id="characterImg">
+    </div>
+  </div>
+
+  <div class="hud">
+
+    <div class="counter-box">
+      Acesa
+      <span class="counter-val" id="counterVal">0</span>
+      vez(es)
+    </div>
+
+    <div class="status-label status-off" id="statusLabel">
+      <span></span>LUZ APAGADA
+    </div>
+
+  </div>
+
+</div>
+
+<script src="js.js"></script>
+</body>
+</html>
