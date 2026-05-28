@@ -611,14 +611,17 @@ Ideal para estudos de:
 
 ## 💡 Luz acesa
 
-<img width="1402" height="1122" alt="tung" src="https://github.com/user-attachments/assets/c0ef1401-c239-4b0b-b6f0-22aebc6f447a" />
+<img width="716" height="461" alt="Captura de tela 2026-05-28 141804" src="https://github.com/user-attachments/assets/dfa497e2-026f-49f9-9b45-ff2c10b019e3" />
+
 
 
 ---
 
 ## 🌑 Luz apagada
 
-<img width="1402" height="1122" alt="sahur" src="https://github.com/user-attachments/assets/b7a9c5c0-7d07-426e-8b45-52ed3db56492" />
+
+<img width="717" height="465" alt="Captura de tela 2026-05-28 141831" src="https://github.com/user-attachments/assets/9ae461ef-97d5-4c06-9be3-ff503d75d1cd" />
+
 ---
 ## 💡 Luz acesa
 # 🚀 Tecnologias Utilizadas
